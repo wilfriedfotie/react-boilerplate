@@ -1,0 +1,19 @@
+@import url('https://fonts.cdnfonts.com/css/montserrat');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: Sunset;
+    src: url(public/font/sunset-gothic-light-pro.ttf);
+}
+
+@font-face {
+    font-family: Sunset;
+    font-weight: bold;
+    src: url(public/font/sunset-gothic-bold-pro.913a453.ttf);
+}
+
+body{
+    font-family: Sunset, "Montserrat", "sans-serif";
+}
