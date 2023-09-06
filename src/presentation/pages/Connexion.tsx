@@ -5,7 +5,7 @@ import useConnexionController from "../hook/useConnexionController.ts";
 
 
 export default function Connexion() {
-    const { onSubmit, register, handleSubmit, errors, click} = useConnexionController();
+    const { onSubmit, register, handleSubmit, errors, loginQuery} = useConnexionController();
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -30,7 +30,7 @@ export default function Connexion() {
                         )}
 
                         <div className="w-full my-8 ">
-                            <ButtonSubmit isForm={true} isLoading={click} > Se connecter </ButtonSubmit>
+                            <ButtonSubmit isForm={true} isLoading={loginQuery.isLoading} > Se connecter </ButtonSubmit>
 
                         </div>
                     </div>

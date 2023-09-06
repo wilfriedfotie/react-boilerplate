@@ -1,7 +1,7 @@
 import {createBrowserRouter} from "react-router-dom";
 import Connexion from "../pages/Connexion.tsx";
 import Home from "../pages/home.tsx";
-import {STRING_ROUTE_HOME, STRING_ROUTE_LOGING, STRING_ROUTE_OUT} from "../utils/const.ts";
+import {STRING_ROUTE_HOME, STRING_ROUTE_LOGING, STRING_ROUTE_OUT} from "./const.ts";
 
 const router = createBrowserRouter([
     {

@@ -1,14 +1,18 @@
-import {useState} from "react";
 import {useForm} from "react-hook-form";
-import {UserPorps} from "../../domain/model";
 import * as yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
-import wait from "../utils/wait.ts";
+import UserPorps from "../../data/models/User.ts";
+import {useLogin} from "../../domain/usecases/useLogin.ts";
+import UserRepositoryImpl from "../../data/repositories/UserRepositoryImpl.ts";
+import UserNetworkServiceImpl from "../../data/datasources/network/UserNetworkServiceImpl.ts";
+import {useNavigate} from "react-router-dom";
+import {STRING_ROUTE_HOME} from "../utils/const.ts";
 
 
 function useConnexionController() {
 
-    const [click, setSclicked] = useState<boolean>(false);
+    const login = useLogin(new UserRepositoryImpl(new UserNetworkServiceImpl()));
+    const navigate = useNavigate();
 
     const schema = yup
         .object({
@@ -28,17 +32,14 @@ function useConnexionController() {
 
 
     const onSubmit = async (data: UserPorps) => {
-        if (click) return;
-        setSclicked(true);
-        await wait(3000)
-        console.log(data);
-        setSclicked(false);
+        if (login.isLoading) return;
+        await login.mutateAsync(data)
+        navigate(STRING_ROUTE_HOME)
     };
 
     return {
-        onSubmit, register, handleSubmit, errors, click
+        onSubmit, register, handleSubmit, errors, loginQuery: login
     }
-
 
 }
 

@@ -1,6 +1,6 @@
 import {BoxArrowLeft, HouseGear,} from "react-bootstrap-icons"
 import React, {PropsWithChildren, ReactNode} from "react"
-import {UserPorps} from "../../../domain/model";
+import {UserPorps} from "../../../data/models";
 import {useLocation, useNavigate,} from "react-router-dom";
 import {STRING_ROUTE_HOME, STRING_ROUTE_OUT} from "../../utils/const.ts";
 
